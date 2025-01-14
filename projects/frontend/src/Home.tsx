@@ -103,8 +103,8 @@ const Home: React.FC<HomeProps> = () => {
                 <input
                   type="number"
                   className="input input-bordered"
-                  value={(unitaryPrice / BigInt(10e6)).toString()}
-                  onChange={(e) => setUnitaryPrice(BigInt(e.currentTarget.value || '0') * BigInt(10e6))}
+                  value={(unitaryPrice / BigInt(10e5)).toString()}
+                  onChange={(e) => setUnitaryPrice(BigInt(e.currentTarget.value || '0') * BigInt(10e5))}
                 />
                 <MethodCall
                   methodFunction={methods.create(algorand, dmClient, activeAddress, unitaryPrice, 10n, 0n, setAppId)}
@@ -127,7 +127,7 @@ const Home: React.FC<HomeProps> = () => {
             {activeAddress && appId !== 0 && unitsLeft !== 0n && (
               <div>
                 <label className="label">Price Per Unit</label>
-                <input type="text" className="input input-bordered" value={(unitaryPrice / BigInt(10e6)).toString()} readOnly />
+                <input type="text" className="input input-bordered" value={(unitaryPrice / BigInt(10e5)).toString()} readOnly />
                 <label className="label">Desired Quantity</label>
                 <input
                   type="number"
@@ -145,7 +145,7 @@ const Home: React.FC<HomeProps> = () => {
                     unitaryPrice,
                     setUnitsLeft,
                   )}
-                  text={`Buy ${quantity} unit for ${(unitaryPrice * BigInt(quantity)) / BigInt(10e6)} ALGO`}
+                  text={`Buy ${quantity} unit for ${(unitaryPrice * BigInt(quantity)) / BigInt(10e5)} ALGO`}
                 />
               </div>
             )}
